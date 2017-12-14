@@ -14,5 +14,16 @@ describe GildedRose do
         expect { gilded_rose.update_quality }.to change { product.quality }.by(-2)
       end
     end
+
+    describe 'ordinary product with sell_in = 0 and quality = 2' do
+
+      it 'decreases quality by 2' do
+        product     = Item.new('Ordinary Product', 0, 2)
+        products    = [product]
+        gilded_rose = GildedRose.new(products)
+
+        expect { gilded_rose.update_quality }.to change { product.quality }.by(-2)
+      end
+    end
   end
 end
