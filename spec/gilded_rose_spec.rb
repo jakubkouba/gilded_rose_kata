@@ -46,5 +46,14 @@ describe GildedRose do
       end
 
     end
+
+    describe 'ordinary product with sell_in = 2 and quality 0' do
+      let(:sell_in) { 2 }
+      let(:quality) { 0 }
+
+      it 'does not change quality from 0' do
+        expect { update_quality }.not_to change { product.quality }.from(0)
+      end
+    end
   end
 end
