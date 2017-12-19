@@ -9,18 +9,18 @@ describe GildedRose do
     let(:products) { [product] }
     let(:gilded_rose) { GildedRose.new(products) }
 
-    subject { gilded_rose.update_quality }
+    subject(:update_quality) { gilded_rose.update_quality }
 
     describe 'ordinary product with sell_in = -1 and quality = 2' do
       let(:sell_in) { -1 }
       let(:quality) { 2 }
 
       it 'decreases quality by 2' do
-        expect { subject }.to change { product.quality }.by(-2)
+        expect { update_quality }.to change { product.quality }.by(-2)
       end
 
       it 'decreases sell_in by 1' do
-        expect { subject }.to change { product.sell_in }.by(-1)
+        expect { update_quality }.to change { product.sell_in }.by(-1)
       end
     end
 
@@ -29,11 +29,11 @@ describe GildedRose do
       let(:quality) { 2 }
 
       it 'decreases quality by 2' do
-        expect { subject }.to change { product.quality }.by(-2)
+        expect { update_quality }.to change { product.quality }.by(-2)
       end
 
       it 'decreases sell_in by 1' do
-        expect { subject }.to change { product.sell_in }.by(-1)
+        expect { update_quality }.to change { product.sell_in }.by(-1)
       end
     end
 
@@ -42,7 +42,7 @@ describe GildedRose do
       let(:quality) { 2 }
 
       it 'decrease quality by 1' do
-        expect{ subject }.to change { product.quality }.by(-1)
+        expect { update_quality }.to change { product.quality }.by(-1)
       end
 
     end
