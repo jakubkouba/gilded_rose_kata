@@ -38,7 +38,12 @@ describe GildedRose do
     end
 
     describe 'ordinary product with sell_in = 2 and quality 2' do
+      let(:sell_in) { 2 }
+      let(:quality) { 2 }
 
+      it 'decrease quality by 1' do
+        expect{ subject }.to change { product.quality }.by(-1)
+      end
 
     end
   end
