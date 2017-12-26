@@ -56,5 +56,19 @@ describe GildedRose do
         expect { update_quality }.not_to change { product.quality }.from(0)
       end
     end
+
+    describe 'Aged Brie' do
+      let(:product_name) { 'Aged Brie' }
+      let(:product) { Item.new(product_name, sell_in, quality) }
+
+      describe 'with sell_in = 10 and quality 50' do
+        let(:sell_in) { 10 }
+        let(:quality) { 50 }
+
+        it 'does not change quality from 50' do
+          expect { update_quality }.not_to change { product.quality }.from(50)
+        end
+      end
+    end
   end
 end
