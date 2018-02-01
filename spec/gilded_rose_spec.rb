@@ -96,5 +96,22 @@ describe GildedRose do
         end
       end
     end
+
+    describe 'Backstage passes to a TAFKAL80ETC concert' do
+      let(:product_name) { 'Backstage passes to a TAFKAL80ETC concert' }
+
+      context 'when SellIn is 15 and Quality is 9' do
+        let(:sell_in) { 15 }
+        let(:quality) { 9 }
+
+        it 'decrease SellIn by 1' do
+          expect { update_quality }.to change { product.sell_in }.to(14)
+        end
+
+        it 'increase Quality by 1' do
+          expect { update_quality }.to change { product.quality }.to(10)
+        end
+      end
+    end
   end
 end
