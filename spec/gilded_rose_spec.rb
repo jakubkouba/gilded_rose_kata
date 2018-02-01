@@ -121,6 +121,15 @@ describe GildedRose do
           expect { update_quality }.to change { product.quality }.to(11)
         end
       end
+
+      context 'when SellIn is 4 and Quality 9' do
+        let(:sell_in) { 4 }
+        let(:quality) { 9 }
+
+        it 'increase Quality by 2' do
+          expect { update_quality }.to change { product.quality }.to(12)
+        end
+      end
     end
   end
 end
