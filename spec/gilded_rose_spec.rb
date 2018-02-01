@@ -139,6 +139,15 @@ describe GildedRose do
           expect { update_quality }.to change { product.quality }.to(0)
         end
       end
+
+      context 'when SellIn is 20 and Quality 50' do
+        let(:sell_in) { 20 }
+        let(:quality) { 50 }
+
+        it 'Does not increase Quality above 50' do
+          expect { update_quality }.not_to change { product.quality }.from(50)
+        end
+      end
     end
   end
 end
