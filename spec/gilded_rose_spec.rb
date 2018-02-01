@@ -74,8 +74,17 @@ describe GildedRose do
         let(:sell_in) { 10 }
         let(:quality) { 40 }
 
-        it 'does not change quality from 50' do
+        it 'increase quality by 1' do
           expect { update_quality }.to change { product.quality }.by(1)
+        end
+      end
+
+      context 'when SellIn is -1 and Quality 40' do
+        let(:sell_in) { -1 }
+        let(:quality) { 40 }
+
+        it 'increase quality by 1' do
+          expect { update_quality }.to change { product.quality }.to(42)
         end
       end
     end
