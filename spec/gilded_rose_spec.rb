@@ -130,6 +130,15 @@ describe GildedRose do
           expect { update_quality }.to change { product.quality }.to(12)
         end
       end
+
+      context 'when SellIn is 0 and Quality 9' do
+        let(:sell_in) { 0 }
+        let(:quality) { 9 }
+
+        it 'drops Quality to 0' do
+          expect { update_quality }.to change { product.quality }.to(0)
+        end
+      end
     end
   end
 end

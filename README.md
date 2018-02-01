@@ -10,6 +10,7 @@
 - product is `Backstage Pass` with SellIn > 10; Quality > 0; SellIn = 15; Quality = 10 => Quality = 9
 - product is `Backstage Pass` with SellIn <= 10; Quality > 0; SellIn = 10; Quality = 9 => Quality = 11
 - product is `Backstage Pass` with SellIn <= 5 ; Quality > 0; SellIn = 4; Quality = 9 => Quality = 13
+- product is `Backstage Pass` with SellIn = 0 ; Quality > 0; SellIn = 0; Quality = 9 => Quality = 13
 - product is `Backstage Pass` with SellIn < 5
 - product is `Backstage Pass` with SellIn < 0
 - product is `Conjured`
