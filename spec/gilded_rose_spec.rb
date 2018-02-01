@@ -69,6 +69,15 @@ describe GildedRose do
           expect { update_quality }.not_to change { product.quality }.from(50)
         end
       end
+
+      describe 'with sell_in = 10 and quality 40' do
+        let(:sell_in) { 10 }
+        let(:quality) { 40 }
+
+        it 'does not change quality from 50' do
+          expect { update_quality }.to change { product.quality }.by(1)
+        end
+      end
     end
   end
 end
