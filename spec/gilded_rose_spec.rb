@@ -6,7 +6,8 @@ describe GildedRose do
   describe '#update_quality' do
     let(:sell_in) {}
     let(:quality) {}
-    let(:product) { Item.new('Ordinary Product', sell_in, quality) }
+    let(:product_name) { 'Ordinary Product' }
+    let(:product) { Item.new(product_name, sell_in, quality) }
     let(:products) { [product] }
     let(:gilded_rose) { GildedRose.new(products) }
 
@@ -59,7 +60,6 @@ describe GildedRose do
 
     describe 'Aged Brie' do
       let(:product_name) { 'Aged Brie' }
-      let(:product) { Item.new(product_name, sell_in, quality) }
 
       describe 'with sell_in = 10 and quality 50' do
         let(:sell_in) { 10 }
@@ -76,6 +76,23 @@ describe GildedRose do
 
         it 'does not change quality from 50' do
           expect { update_quality }.to change { product.quality }.by(1)
+        end
+      end
+    end
+
+    describe 'Sulfuras, Hand of Ragnaros' do
+      let(:product_name) { 'Sulfuras, Hand of Ragnaros' }
+
+      describe 'when SellIn is 10 and quality is 30' do
+        let(:sell_in) { 10 }
+        let(:quality) { 30 }
+
+        it 'does not decrease sell_in value' do
+          expect { update_quality }.not_to change { product.sell_in }.from(10)
+        end
+
+        it 'does not decrease quality' do
+          expect { update_quality }.not_to change { product.quality }.from(30)
         end
       end
     end
