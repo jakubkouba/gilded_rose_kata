@@ -52,4 +52,6 @@ build-iPhoneSimulator/
 .rvmrc
 
 .idea
+.byebug_history
+
 
