@@ -1,5 +1,5 @@
 require_relative 'spec_helper'
-require_relative '../gilded_rose'
+require_relative '../lib/gilded_rose'
 
 describe GildedRose do
 
