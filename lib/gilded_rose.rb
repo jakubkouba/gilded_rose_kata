@@ -28,7 +28,7 @@ class GildedRose
           if item.name != "Backstage passes to a TAFKAL80ETC concert"
             decrease_item_quality(item)
           else
-            item.quality = item.quality - item.quality
+            item.quality = 0
           end
         else
           increase_item_quality(item)
