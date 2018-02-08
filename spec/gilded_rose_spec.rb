@@ -162,7 +162,7 @@ describe GildedRose do
         let(:sell_in) { -1 }
         let(:quality) { 20 }
 
-        it 'Does not increase Quality above 50' do
+        it 'drops quality to 0' do
           expect { update_quality }.to change { product.quality }.to(0)
         end
       end
