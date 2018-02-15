@@ -135,7 +135,7 @@ describe GildedRose do
         let(:sell_in) { 4 }
         let(:quality) { 9 }
 
-        it 'increase Quality by 2' do
+        it 'increase Quality by 3' do
           expect { update_quality }.to change { product.quality }.to(12)
         end
       end
