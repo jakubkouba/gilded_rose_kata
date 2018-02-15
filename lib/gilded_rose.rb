@@ -10,7 +10,7 @@ class GildedRose
     @items.each do |item|
       decrease_expiration(item)
 
-      if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
+      if ordinary_product(item)
         decrease_item_quality(item)
       else
         # aged brie and backstage quality increases with time closing to sell day
@@ -36,6 +36,10 @@ class GildedRose
       end
 
     end
+  end
+
+  def ordinary_product(item)
+    item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
   end
 
   def decrease_expiration(item)
