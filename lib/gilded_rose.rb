@@ -24,8 +24,8 @@ class GildedRose
       end
 
       if expired?(item)
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
+        if not_aged_brie?(item)
+          if not_backstage_pass?(item)
             decrease_item_quality(item)
           else
             item.quality = 0
@@ -39,7 +39,11 @@ class GildedRose
   end
 
   def ordinary_product(item)
-    not_aged_brie?(item) and item.name != "Backstage passes to a TAFKAL80ETC concert"
+    not_aged_brie?(item) && not_backstage_pass?(item)
+  end
+
+  def not_backstage_pass?(item)
+    item.name != 'Backstage passes to a TAFKAL80ETC concert'
   end
 
   def aged_brie?(item)
