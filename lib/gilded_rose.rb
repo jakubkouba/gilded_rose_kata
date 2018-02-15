@@ -15,7 +15,7 @@ class GildedRose
       else
         # aged brie and backstage quality increases with time closing to sell day
         if item.quality < 50
-          item.quality = item.quality + 1
+          item.quality += 1
           if item.name == "Backstage passes to a TAFKAL80ETC concert"
             increase_item_quality(item) if item.sell_in < 11
             increase_item_quality(item) if item.sell_in < 6
