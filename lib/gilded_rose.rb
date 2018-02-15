@@ -16,7 +16,7 @@ class GildedRose
         # aged brie and backstage quality increases with time closing to sell day
         if item.quality < 50
           item.quality += 1
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
+          if backstage_pass?(item)
             increase_item_quality(item) if item.sell_in < 11
             increase_item_quality(item) if item.sell_in < 6
           end
@@ -42,8 +42,12 @@ class GildedRose
     not_aged_brie?(item) && not_backstage_pass?(item)
   end
 
+  def backstage_pass?(item)
+    item.name == 'Backstage passes to a TAFKAL80ETC concert'
+  end
+
   def not_backstage_pass?(item)
-    item.name != 'Backstage passes to a TAFKAL80ETC concert'
+    !backstage_pass?(item)
   end
 
   def aged_brie?(item)
