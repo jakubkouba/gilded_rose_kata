@@ -39,7 +39,15 @@ class GildedRose
   end
 
   def ordinary_product(item)
-    item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
+    not_aged_brie?(item) and item.name != "Backstage passes to a TAFKAL80ETC concert"
+  end
+
+  def aged_brie?(item)
+    item.name == 'Aged Brie'
+  end
+
+  def not_aged_brie?(item)
+    !aged_brie?(item)
   end
 
   def decrease_expiration(item)
