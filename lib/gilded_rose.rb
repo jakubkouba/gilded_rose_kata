@@ -24,17 +24,14 @@ class GildedRose
       end
 
       if expired?(item)
-        if not_aged_brie?(item)
-          if not_backstage_pass?(item)
-            decrease_item_quality(item)
-          else
-            item.quality = 0
-          end
-        else
+        if aged_brie?(item)
           increase_item_quality(item)
+        elsif backstage_pass?(item)
+          item.quality = 0
+        else
+          decrease_item_quality(item)
         end
       end
-
     end
   end
 
