@@ -12,14 +12,12 @@ class GildedRose
 
       if ordinary_product(item)
         decrease_item_quality(item)
-      else
-        # aged brie and backstage quality increases with time closing to sell day
-        if item.quality < 50
-          item.quality += 1
-          if backstage_pass?(item)
-            increase_item_quality(item) if item.sell_in < 11
-            increase_item_quality(item) if item.sell_in < 6
-          end
+      elsif item.quality < 50
+        item.quality += 1
+
+        if backstage_pass?(item)
+          increase_item_quality(item) if item.sell_in < 11
+          increase_item_quality(item) if item.sell_in < 6
         end
       end
 
