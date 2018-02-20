@@ -6,7 +6,7 @@ class GildedRose
     @items = items
   end
 
-  def update_quality()
+  def update_quality
     @items.each do |item|
       decrease_expiration(item)
 
@@ -72,9 +72,7 @@ class GildedRose
   end
 
   def increase_item_quality(item)
-    if item.quality < 50
-      item.quality = item.quality + 1
-    end
+    item.quality += 1 if item.quality < 50
   end
 end
 
