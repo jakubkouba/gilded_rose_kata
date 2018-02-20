@@ -59,7 +59,12 @@ class GildedRose
   end
 
   def decrease_expiration(item)
-    item.sell_in -= 1 if item.name != 'Sulfuras, Hand of Ragnaros'
+    return if sulfuras?(item)
+    item.sell_in -= 1
+  end
+
+  def sulfuras?(item)
+    item.name == 'Sulfuras, Hand of Ragnaros'
   end
 
   def expired?(item)
@@ -67,7 +72,7 @@ class GildedRose
   end
 
   def decrease_item_quality(item)
-    return if item.name == "Sulfuras, Hand of Ragnaros"
+    return if sulfuras?(item)
     item.quality -= 1 if item.quality > 0
   end
 
