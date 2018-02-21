@@ -28,26 +28,6 @@ class GildedRose
     end
   end
 
-  def ordinary_product(item)
-    not_aged_brie?(item) && not_backstage_pass?(item)
-  end
-
-  def backstage_pass?(item)
-    item.name == 'Backstage passes to a TAFKAL80ETC concert'
-  end
-
-  def not_backstage_pass?(item)
-    !backstage_pass?(item)
-  end
-
-  def aged_brie?(item)
-    item.name == 'Aged Brie'
-  end
-
-  def not_aged_brie?(item)
-    !aged_brie?(item)
-  end
-
   def decrease_expiration(item)
     return if sulfuras?(item)
     item.sell_in -= 1
