@@ -12,7 +12,7 @@ class GildedRose
     @items.each do |item|
       decrease_expiration(item)
 
-      if ordinary_product(item)
+      if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         decrease_item_quality(item)
       elsif item.quality < MAX_QUALITY
         item.quality += 1
