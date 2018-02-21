@@ -6,13 +6,15 @@ class GildedRose
     @items = items
   end
 
+  MAX_QUALITY = 50
+
   def update_quality
     @items.each do |item|
       decrease_expiration(item)
 
       if ordinary_product(item)
         decrease_item_quality(item)
-      elsif item.quality < 50
+      elsif item.quality < MAX_QUALITY
         item.quality += 1
 
         if backstage_pass?(item)
@@ -72,7 +74,7 @@ class GildedRose
   end
 
   def increase_item_quality(item)
-    item.quality += 1 if item.quality < 50
+    item.quality += 1 if item.quality < MAX_QUALITY
   end
 end
 
