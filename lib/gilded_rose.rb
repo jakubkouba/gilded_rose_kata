@@ -12,15 +12,14 @@ class GildedRose
     @items.each do |item|
       decrease_expiration(item)
 
-      if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
+      if aged_brie?(item)
+        item.quality += 1 if item.quality < MAX_QUALITY
+      elsif backstage_pass?(item)
+        item.quality += 1 if item.quality < MAX_QUALITY
+        increase_item_quality(item) if item.sell_in < 11
+        increase_item_quality(item) if item.sell_in < 6
+      else
         decrease_item_quality(item)
-      elsif item.quality < MAX_QUALITY
-        item.quality += 1
-
-        if backstage_pass?(item)
-          increase_item_quality(item) if item.sell_in < 11
-          increase_item_quality(item) if item.sell_in < 6
-        end
       end
 
       if expired?(item)
