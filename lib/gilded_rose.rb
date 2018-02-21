@@ -23,7 +23,6 @@ class GildedRose
       elsif sulfuras?(item)
       else
         decrease_item_quality(item)
-        decrease_item_quality(item) if expired?(item)
       end
     end
   end
@@ -62,7 +61,12 @@ class GildedRose
   end
 
   def decrease_item_quality(item)
-    item.quality -= 1 if item.quality > 0
+    return unless item.quality > 0
+    if expired?(item)
+      item.quality -= 2
+    else
+      item.quality -= 1
+    end
   end
 
   def increase_item_quality(item)
