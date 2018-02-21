@@ -13,23 +13,16 @@ class GildedRose
       decrease_expiration(item)
 
       if aged_brie?(item)
-        item.quality += 1 if item.quality < MAX_QUALITY
+        increase_item_quality(item)
+        increase_item_quality(item) if expired?(item)
       elsif backstage_pass?(item)
-        item.quality += 1 if item.quality < MAX_QUALITY
+        increase_item_quality(item)
         increase_item_quality(item) if item.sell_in < 11
         increase_item_quality(item) if item.sell_in < 6
+        item.quality = 0 if expired?(item)
       else
         decrease_item_quality(item)
-      end
-
-      if expired?(item)
-        if aged_brie?(item)
-          increase_item_quality(item)
-        elsif backstage_pass?(item)
-          item.quality = 0
-        else
-          decrease_item_quality(item)
-        end
+        decrease_item_quality(item) if expired?(item)
       end
     end
   end
