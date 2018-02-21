@@ -12,15 +12,16 @@ class GildedRose
     @items.each do |item|
       decrease_expiration(item)
 
-      if aged_brie?(item)
+      case item.name
+      when 'Aged Brie'
         increase_item_quality(item)
         increase_item_quality(item) if expired?(item)
-      elsif backstage_pass?(item)
+      when 'Backstage passes to a TAFKAL80ETC concert'
         increase_item_quality(item)
         increase_item_quality(item) if item.sell_in < 11
         increase_item_quality(item) if item.sell_in < 6
         item.quality = 0 if expired?(item)
-      elsif sulfuras?(item)
+      when 'Sulfuras, Hand of Ragnaros'
       else
         decrease_item_quality(item)
       end
