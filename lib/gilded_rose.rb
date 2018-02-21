@@ -66,7 +66,8 @@ class GildedRose
   end
 
   def increase_item_quality(item)
-    item.quality += 1 if item.quality < MAX_QUALITY
+    return unless item.quality < MAX_QUALITY
+    item.quality += 1
   end
 end
 
