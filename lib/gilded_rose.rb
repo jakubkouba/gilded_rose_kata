@@ -20,6 +20,7 @@ class GildedRose
         increase_item_quality(item) if item.sell_in < 11
         increase_item_quality(item) if item.sell_in < 6
         item.quality = 0 if expired?(item)
+      elsif sulfuras?(item)
       else
         decrease_item_quality(item)
         decrease_item_quality(item) if expired?(item)
@@ -61,7 +62,6 @@ class GildedRose
   end
 
   def decrease_item_quality(item)
-    return if sulfuras?(item)
     item.quality -= 1 if item.quality > 0
   end
 
