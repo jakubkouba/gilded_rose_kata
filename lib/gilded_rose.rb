@@ -2,6 +2,7 @@ require 'byebug'
 require 'aged_brie'
 require 'backstage_pass'
 require 'ordinary_product'
+require 'sulfuras'
 
 
 class GildedRose
@@ -18,7 +19,7 @@ class GildedRose
       when 'Backstage passes to a TAFKAL80ETC concert'
         BackstagePass.update(item)
       when 'Sulfuras, Hand of Ragnaros'
-        next
+        Sulfuras.update
       else
         OrdinaryProduct.update(item)
       end
