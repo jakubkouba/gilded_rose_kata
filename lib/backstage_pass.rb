@@ -8,5 +8,6 @@ class BackstagePass
     increase_item_quality(item) if item.sell_in <= 10
     increase_item_quality(item) if item.sell_in <= 5
     item.quality = 0 if expired?(item)
+    decrease_expiration(item)
   end
 end
