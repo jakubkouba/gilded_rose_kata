@@ -17,15 +17,16 @@ class GildedRose
       case item.name
       when 'Aged Brie'
         AgedBrie.update(item)
+        decrease_expiration(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
         BackstagePass.update(item)
+        decrease_expiration(item)
       when 'Sulfuras, Hand of Ragnaros'
         next
       else
         OrdinaryProduct.update(item)
+        decrease_expiration(item)
       end
-
-      decrease_expiration(item)
     end
   end
 
