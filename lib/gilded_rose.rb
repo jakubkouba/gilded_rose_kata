@@ -1,6 +1,8 @@
 require 'byebug'
 require 'aged_brie'
 require 'backstage_pass'
+require 'ordinary_product'
+
 
 class GildedRose
 
@@ -20,7 +22,7 @@ class GildedRose
       when 'Sulfuras, Hand of Ragnaros'
         next
       else
-        decrease_item_quality(item)
+        OrdinaryProduct.update(item)
       end
 
       decrease_expiration(item)
