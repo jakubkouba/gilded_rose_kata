@@ -1,5 +1,6 @@
 require 'byebug'
 require 'aged_brie'
+require 'backstage_pass'
 
 class GildedRose
 
@@ -15,10 +16,7 @@ class GildedRose
       when 'Aged Brie'
         AgedBrie.update(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
-        increase_item_quality(item)
-        increase_item_quality(item) if item.sell_in <= 10
-        increase_item_quality(item) if item.sell_in <= 5
-        item.quality = 0 if expired?(item)
+        BackstagePass.update(item)
       when 'Sulfuras, Hand of Ragnaros'
         next
       else
