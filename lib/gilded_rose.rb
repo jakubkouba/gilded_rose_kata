@@ -10,8 +10,6 @@ class GildedRose
     @items = items
   end
 
-  MAX_QUALITY = 50
-
   def update_quality
     @items.each do |item|
       case item.name
@@ -25,28 +23,6 @@ class GildedRose
         OrdinaryProduct.update(item)
       end
     end
-  end
-
-  def decrease_expiration(item)
-    item.sell_in -= 1
-  end
-
-  def expired?(item)
-    item.sell_in <= 0
-  end
-
-  def decrease_item_quality(item)
-    return unless item.quality > 0
-    if expired?(item)
-      item.quality -= 2
-    else
-      item.quality -= 1
-    end
-  end
-
-  def increase_item_quality(item)
-    return unless item.quality < MAX_QUALITY
-    item.quality += 1
   end
 end
 
