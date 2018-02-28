@@ -1,4 +1,5 @@
 require 'byebug'
+require 'aged_brie'
 
 class GildedRose
 
@@ -12,8 +13,7 @@ class GildedRose
     @items.each do |item|
       case item.name
       when 'Aged Brie'
-        increase_item_quality(item)
-        increase_item_quality(item) if expired?(item)
+        AgedBrie.update(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
         increase_item_quality(item)
         increase_item_quality(item) if item.sell_in <= 10
